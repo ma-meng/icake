@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.4//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--配置分页插件的拦截器-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="helperDialect" value="mysql"/>
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
+    <!--配置默认要使用的数据库环境-->
+    <environments default="development">
+       <!-- 配置数据库环境-->
+        <environment id="development">
+            <!--配置数据库的事务-->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- 配置链接数据库的相关参数-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/icake?serverTimezone=UTC&amp;useUnicode=true&amp;useSSL=false&amp;characterEncoding=UTF-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="199620Ss"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--配置扫描的包路径，底层自动给包里的接口实现实例化对象-->
+    <mappers>
+        <package name="com.ma.icake.dao"/>
+    </mappers>
+</configuration>
